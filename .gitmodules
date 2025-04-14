@@ -4,3 +4,6 @@
 [submodule "Common"]
 	path = Common
 	url = https://github.com/fcampoa/AlmaDemaltaCommon.git
+[submodule "alma-de-malta-web"]
+	path = alma-de-malta-web
+	url = https://github.com/fcampoa/alma-de-malta-web.git
