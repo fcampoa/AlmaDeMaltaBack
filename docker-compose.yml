@@ -1,6 +1,23 @@
 version: '3.8'
 
 services:
+  alma-de-malta-api:
+    build:
+      context: .
+      dockerfile: Api/AlmaDeMalta.Api/Dockerfile
+    ports:
+      - "5127:5127"
+      - "7217:7217"
+    networks:
+      - app_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5127
+      - MongoDB__ConnectionString=mongodb://admin:admin@mongo_container:27017
+      - MongoDB__DatabaseName=AlmaDeMalta
+    depends_on:
+      - mongo
+      
   mongo:
     image: mongo:7
     container_name: mongo_container
@@ -12,7 +29,12 @@ services:
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app_network
     restart: unless-stopped
+networks:
+  app_network:
+    driver: bridge
 
 volumes:
   mongo-data:
