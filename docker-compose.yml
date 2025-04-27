@@ -17,6 +17,19 @@ services:
       - MongoDB__DatabaseName=AlmaDeMalta
     depends_on:
       - mongo
+
+  alma-de-malta-web:
+    build:
+      context: ./alma-de-malta-web
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200" # Cambia los puertos según sea necesario
+    networks:
+      - app_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - alma-de-malta-api
       
   mongo:
     image: mongo:7
