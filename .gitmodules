@@ -10,3 +10,6 @@
 	path = alma-de-malta-web
 	url = https://github.com/fcampoa/alma-de-malta-web.git
 	branch = main
+[submodule "alma-de-malta-app"]
+	path = alma-de-malta-app
+	url = https://github.com/fcampoa/alma-de-malta-app.git
