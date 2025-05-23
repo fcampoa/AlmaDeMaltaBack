@@ -26,7 +26,7 @@ RUN ls -la ./Api/ || echo "Directorio Api/ no existe"
 RUN ls -la ./Common/ || echo "Directorio Common/ no existe"
 
 # Verificar si archivos específicos existen
-RUN test -f "Api/AlmaDeMalta.Api/AlmaDeMalta.Api.csproj" && echo "Archivo existe" || echo "Archivo NO existe"
+RUN test -f "./Api/AlmaDeMalta.Api/AlmaDeMalta.Api.csproj" && echo "Archivo existe" || echo "Archivo NO existe"
 
 RUN dotnet restore
 # RUN ls -la
