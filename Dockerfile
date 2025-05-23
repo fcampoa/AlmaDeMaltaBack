@@ -3,14 +3,14 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Copiar la solución y los archivos de proyecto
-# COPY *.sln ./
-# COPY ./Api/AlmaDeMalta.Api/AlmaDeMalta.Api.csproj ./Api/AlmaDeMalta.Api/
-# COPY ./Common/AlmaDeMalta.Common.Contracts/AlmaDeMalta.Common.Contracts.csproj ./Common/AlmaDeMalta.Common.Contracts/
-# COPY ./Common/AlmaDeMalta.Common.DatabaseConnection/AlmaDeMalta.Common.DatabaseConnection.csproj ./Common/AlmaDeMalta.Common.DatabaseConnection/
-# COPY ./Common/migrations/AlmaDeMalta.Migrations/AlmaDeMalta.Migrations.csproj ./Common/migrations/AlmaDeMalta.Migrations/
+COPY *.sln ./
+COPY ./Api/AlmaDeMalta.Api/AlmaDeMalta.Api.csproj ./Api/AlmaDeMalta.Api/
+COPY ./Common/AlmaDeMalta.Common.Contracts/AlmaDeMalta.Common.Contracts.csproj ./Common/AlmaDeMalta.Common.Contracts/
+COPY ./Common/AlmaDeMalta.Common.DatabaseConnection/AlmaDeMalta.Common.DatabaseConnection.csproj ./Common/AlmaDeMalta.Common.DatabaseConnection/
+COPY ./Common/migrations/AlmaDeMalta.Migrations/AlmaDeMalta.Migrations.csproj ./Common/migrations/AlmaDeMalta.Migrations/
 # RUN dotnet restore
 
-COPY . ./
+# COPY . ./
 RUN ls -la
 RUN ls -la Api/
 RUN ls -la Api/AlmaDeMalta.Api/
