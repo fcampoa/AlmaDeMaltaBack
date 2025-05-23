@@ -11,6 +11,10 @@ WORKDIR /app
 
 
 COPY . ./
+COPY ./Api/AlmaDeMalta.Api/AlmaDeMalta.Api.csproj /app/Api/AlmaDeMalta.Api/
+COPY ./Common/AlmaDeMalta.Common.Contracts/AlmaDeMalta.Common.Contracts.csproj /app/Common/AlmaDeMalta.Common.Contracts/
+COPY ./Common/AlmaDeMalta.Common.DatabaseConnection/AlmaDeMalta.Common.DatabaseConnection.csproj /app/Common/AlmaDeMalta.Common.DatabaseConnection/
+COPY ./Common/migrations/AlmaDeMalta.Migrations/AlmaDeMalta.Migrations.csproj /app/Common/migrations/AlmaDeMalta.Migrations/
 
 RUN echo "=== Contenido del directorio raíz ===" && ls -la
 RUN echo "=== Estructura de directorios ===" && find . -type d -name "*" | head -20
