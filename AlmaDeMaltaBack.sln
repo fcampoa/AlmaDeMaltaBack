@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{D82C56D6-B2CD-F611-9E31-04638F7EC30E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlmaDeMalta.api", "Api\AlmaDeMalta.Api\AlmaDeMalta.api.csproj", "{4F9AAA0B-B521-4389-AFA5-7DE080090288}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlmaDeMalta.api", "Api\AlmaDeMalta.Api\AlmaDeMalta.Api.csproj", "{4F9AAA0B-B521-4389-AFA5-7DE080090288}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{881589EE-639B-0A35-DBCE-5D94E4FC90C0}"
 EndProject
