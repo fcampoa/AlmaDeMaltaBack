@@ -12,7 +12,7 @@ COPY . .
 RUN git submodule init && git submodule update --recursive
 
 # Nos movemos a la carpeta correcta que contiene el .sln
-WORKDIR /src
+WORKDIR /src/AlmaDeMaltaBack
 
 # Restauramos dependencias
 RUN dotnet restore
