@@ -1,0 +1,1 @@
+web: cd $HOME/heroku_output && ./Api/AlmaDeMalta.Api --server.urls http://+:$PORT
