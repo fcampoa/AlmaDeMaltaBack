@@ -1,0 +1,70 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+**/bin/
+**/obj/
+**/.vs/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]ppPackages/
+[Aa]rtifacts/
+
+# NuGet artifacts
+*.nuget.cache
+*.dgspec.json
+*.assets.cache
+project.assets.json
+
+# .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.log
+*.vsix
+*.nupkg
+*.snk
+*.swp
+*.userprefs
+*.tmp
+*.bak
+*.obj
+*.idb
+*.suo
+*.tlb
+*.tlh
+*.log
+*.vspscc
+*.vssscc
+*.builds
+*.pidb
+*.svclog
+*.scc
+
+# Rider
+.idea/
+*.sln.iml
+
+# Others
+*.DS_Store
+*.directory
+*.class
+*.log
+*.pyc
+*.pyo
+*.min.js
+*.min.css
+node_modules/
