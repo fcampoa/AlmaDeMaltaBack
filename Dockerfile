@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y git
 
 # Copiar todo el código
 COPY . .
-RUN git submodule init && git submodule update
+RUN git submodule init && git submodule update --recursive
 
 # Restaurar y publicar
 WORKDIR /src/AlmaDeMaltaBack
