@@ -1,0 +1,21 @@
+- name: Checkout code
+  uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+
+- name: Install Heroku CLI
+  run: |
+    curl https://cli-assets.heroku.com/install.sh | sh
+
+- name: Set Heroku API key
+  run: echo "Heroku API key is set"
+  env:
+    HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+- name: Deploy to Heroku
+  env:
+    HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  run: |
+    git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/tu-nombre-de-app.git
+    git commit -m "Redeploy" --allow-empty
+    git push -f heroku HEAD:main
