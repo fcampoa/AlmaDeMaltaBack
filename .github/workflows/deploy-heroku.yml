@@ -27,8 +27,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          heroku auth:token
-          echo $HEROKU_API_KEY | heroku auth:login --stdin
+          echo "HEROKU_API_KEY is set"
 
       - name: Deploy to Heroku
         env:
