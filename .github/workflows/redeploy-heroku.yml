@@ -29,6 +29,6 @@ jobs:
 
       - name: Push to Heroku
         run: |
-          git remote add heroku https://git.heroku.com/tu-app-heroku.git 
+          git remote add heroku https://git.heroku.com/alma-de-malta-api.git 
           git push heroku ${{ env.BRANCH }}:main --force
 
