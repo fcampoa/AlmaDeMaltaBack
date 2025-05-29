@@ -1,21 +1,34 @@
-- name: Checkout code
-  uses: actions/checkout@v4
-  with:
-    fetch-depth: 0
+name: Redeploy to Heroku
 
-- name: Install Heroku CLI
-  run: |
-    curl https://cli-assets.heroku.com/install.sh | sh
+on:
+  workflow_dispatch:  # Solo se ejecuta manualmente
 
-- name: Set Heroku API key
-  run: echo "Heroku API key is set"
-  env:
-    HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-- name: Deploy to Heroku
-  env:
-    HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  run: |
-    git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/tu-nombre-de-app.git
-    git commit -m "Redeploy" --allow-empty
-    git push -f heroku HEAD:main
+      - name: Setup Git
+        run: |
+          git config --global user.email "felixcampoa@gmail.com"
+          git config --global user.name "fcampoa"
+
+      - name: Setup Heroku CLI
+        uses: heroku/actions/setup@v1
+        with:
+          api-key: ${{ secrets.HEROKU_API_KEY }}
+
+      - name: Get current branch
+        id: vars
+        run: echo "BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+
+      - name: Create empty commit
+        run: git commit -m "Redeploy" --allow-empty
+
+      - name: Push to Heroku
+        run: |
+          git remote add heroku https://git.heroku.com/tu-app-heroku.git 
+          git push heroku ${{ env.BRANCH }}:main --force
+
