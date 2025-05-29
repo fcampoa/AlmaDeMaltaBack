@@ -25,7 +25,7 @@ jobs:
         run: echo "BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
 
       - name: Create empty commit
-        run: git commit -m "Redeploy: $(date)" --allow-empty
+        run: git commit -m "Redeploy" --allow-empty
 
       - name: Push to Heroku
         run: |
