@@ -1,39 +1,33 @@
-name: Deploy to Heroku
+name: Redeploy to Heroku
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
+  workflow_dispatch:  # Solo se ejecuta manualmente
 
 jobs:
-  deploy:
-    if: github.event.pull_request.merged == true || github.event_name == 'push'
+  redeploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup Git
+        run: |
+          git config --global user.email "felixcampoa@gmail.com"
+          git config --global user.name "fcampoa"
+
+      - name: Setup Heroku CLI
+        uses: heroku/actions/setup@v1
         with:
-          fetch-depth: 0
+          api-key: ${{ secrets.HEROKU_API_KEY }}
 
-      - name: Install Heroku CLI
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
+      - name: Get current branch
+        id: vars
+        run: echo "BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
 
-      - name: Login to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          echo "HEROKU_API_KEY is set"
+      - name: Create empty commit
+        run: git commit -m "Redeploy: $(date)" --allow-empty
 
-      - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      - name: Push to Heroku
         run: |
-          git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/alma-de-malta-api.git
-          git push -f heroku main
+          git remote add heroku https://git.heroku.com/tu-app-heroku.git 
+          git push heroku ${{ env.BRANCH }}:main --force
